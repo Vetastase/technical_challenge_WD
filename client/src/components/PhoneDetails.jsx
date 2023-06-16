@@ -4,7 +4,7 @@ import { useParams } from "react-router-dom"
 
 const API_URL = "http://localhost:3000";
 
-function PhoneDetails() {
+function PhoneDetails(props) {
     const [phone, setPhone] = useState(null)
     const { id } = useParams();
 
@@ -23,7 +23,27 @@ function PhoneDetails() {
     }, [])
 
   return (
-    <div>PhoneDetails</div>
+    <div className="phone-details d-flex flex-wrap">
+        {phone && (
+            <div>
+                <div>
+                    <div>
+                <img src={phone.imageFileName} className="details-img" alt="phone-img" />
+                </div>
+                <div>
+                    <h1>{phone.name}</h1>
+                    <p>{phone.manufacturer}</p>
+                    <p>{phone.description}</p>
+                    <p>{phone.color}</p>
+                    <p>{phone.price}</p>
+                    <p>{phone.screen}</p>
+                    <p>{phone.processor}</p>
+                    <p>{phone.ram}</p>
+                </div>
+                </div> 
+                </div> 
+        )}
+    </div>
   )
 }
 

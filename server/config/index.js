@@ -14,7 +14,7 @@ module.exports = (app) => {
 // Frontend connection
 app.use(
     cors({
-        ORIGIN: {FRONTEND_URL}
+        ORIGIN: [FRONTEND_URL]
     })
 );
 

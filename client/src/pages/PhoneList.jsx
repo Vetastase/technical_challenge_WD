@@ -1,4 +1,5 @@
-import React from 'react'
+import React, { useState, useEffect } from 'react'
+import { Link } from "react-router-dom"
 import axios from "axios"
 
 const API_URL = "http://localhost:3000";
@@ -16,7 +17,15 @@ function PhoneList() {
     }, [])
 
   return (
-    <div>
+    <div className="phone-list">
+        {phones.map((phone) => (
+            <div key={phone.id}>          
+                <img className="phone-list-img" src={phone.imageFileName} alt="list-img"/>
+                <Link className="btn list-group-item list-group-item-action" to={`/${phone.id}`}>
+                <h1>{phone.name}</h1>
+                </Link>
+                </div>
+        ))}
     </div>
   )
 }

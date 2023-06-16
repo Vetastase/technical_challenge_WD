@@ -8,5 +8,16 @@ router.get("/phones", (req, res, next) => {
 });
 
 router.get("/phones/:id", (req, res, next) => {
-    const 
-})
+    const { id } = req.params
+
+    if (!mongoose.Types.ObjectId.isValid(id)) {
+        res.status(400).json({ message: "Not a valid ID!" });
+        return;
+    }
+
+    Phone.findById(id)
+    .then(data => res.status(200).json(data))
+    .catch(error => res.json(error));
+});
+
+module.exports = router
